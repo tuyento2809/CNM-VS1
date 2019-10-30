@@ -1,0 +1,10 @@
+
+<section id="film">
+    <h1 class="title">Phim Mới Hay Nhất</h1>
+    <div class="row">
+        <div class='col-md-3 col-xs-6' style="margin-top: 8px;" *ngFor="let film of films">
+            <bwm-film-list-item [film]="film"></bwm-film-list-item>
+        </div>
+       
+    </div>
+</section> 

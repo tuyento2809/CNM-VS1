@@ -1,0 +1,18 @@
+<div class="card bwm-card">
+    <img routerLink="/films/{{film._id}}" class="card-img-top" style="width: 230px; height: 254px; 
+        padding-left: 7px;padding-right: 5px; background-color: black" src="{{film.hinh}}" alt="">
+    <div class="card-block">
+        <h6 class="card-text">Tên phim:{{film.tenPhim}}</h6>
+        <p>Giá: {{film.gia}}</p>
+        <div class="row">
+            <div class="col-md-6">
+               <a routerLink="/films/{{film._id}}"><h6 class="card-text"><button class="btn btn-danger">Chi Tiết</button></h6></a>
+            </div>
+            <div class="col-md-6">
+                <h6 routerLink="/films/{{film._id}}" class="card-text"><button class="btn btn-danger"> Mua Vé</button></h6>
+            </div>
+            <br>
+          
+        </div>
+    </div>
+</div>

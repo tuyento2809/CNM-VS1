@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/films">Bán Vé Xem Phim</a>
+  <form ngForm class="form-inline" (submit)="search(tenPhimSearch.value,$event)">
+
+    <input #tenPhimSearch class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <ng-container *ngIf="!auth.isAuthenticated()">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/login">Đăng Nhập <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Đăng Ký</a>
+        </li>
+      </ng-container>
+      <ng-container *ngIf="auth.isAuthenticated()">
+
+        <div *ngIf="auth.hienThiChucNangNhanVien() ||auth.hienThiChucNangQuanLy()  " class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Chức Năng Nhân Viên
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" routerLink="/films/new" >Thêm Phim</a>
+            <a class="dropdown-item" routerLink="/manage/films" >Quản Lý Phim</a>
+          </div>
+        </div>
+
+        <div *ngIf="auth.hienThiChucNangQuanLy() " class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Chức Năng Quản Lý
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/manageStatistical/statistical" >Thống Kê</a>
+            </div>
+          </div>
+
+
+        <li class="nav-item">
+          <a class="nav-link">{{auth.getUsername()}}</a>
+        </li>
+        <li class="nav-item" clickable>
+          <a class="nav-link" (click)="logout()">Đăng Xuất</a>
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</nav>

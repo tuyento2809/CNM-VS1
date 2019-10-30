@@ -1,0 +1,49 @@
+<br><br>
+<h1 style="color: darkred; "> Cập Nhật Thông Tin Phim</h1>
+<br><br>
+<div class="row">
+    <div class="col-md-12" *ngIf="film">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Hinh Ảnh</th>
+                    <th scope="col">Tên Phim</th>
+                    <th scope="col">Mô Tả</th>
+                    <th scope="col">Giá Phim</th>
+                    <th scope="col">Thể Loại</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img class="card-img-top" style="width: 230px; height: 260px; 
+                            padding-left: 7px;padding-right: 5px; background-color: black" [src]="film.hinh" alt="">
+                    </td>
+                    <td>{{film.tenPhim | ucwords}}
+                        <bwm-editable-input [(entity)]="film" [field]="'tenPhim'" [className]="'film-title'"
+                            (entityUpdated)="updateFilm(film._id,$event)">
+
+                        </bwm-editable-input>
+                    </td>
+                    <td>{{film.mota}}
+                        <bwm-editable-input [(entity)]="film" [field]="'mota'" [className]="'film-mota'"
+                            (entityUpdated)="updateFilm(film._id,$event)">
+
+                        </bwm-editable-input>
+                    </td>
+                    <td>{{film?.gia}}$
+                        <bwm-editable-input [(entity)]="film" [field]="'gia'" [className]="'film-gia'"
+                            (entityUpdated)="updateFilm(film._id,$event)">
+
+                        </bwm-editable-input>
+                    </td>
+                    <td>{{film?.theloai?.tenLoai}}
+
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

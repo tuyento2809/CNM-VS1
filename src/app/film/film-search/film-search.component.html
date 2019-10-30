@@ -1,0 +1,15 @@
+
+<section id="film">
+        <h2 *ngIf="films.length > 0" class="title">Phim Bạn Tìm Kiếm : {{tenPhim | ucwords}}</h2>
+        <h2 *ngIf="errors.length > 0" class="title">
+            <p *ngFor="let error of errors">
+                {{error.detail}}
+            </p>
+        </h2>
+        <div class="row">
+            <div class='col-md-3 col-xs-6' style="margin-top: 8px;" *ngFor="let film of films">
+                <bwm-film-list-item [film]="film"></bwm-film-list-item>
+            </div>
+           
+        </div>
+    </section> 

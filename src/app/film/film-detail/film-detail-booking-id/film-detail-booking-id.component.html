@@ -1,0 +1,31 @@
+<br><br>
+<h1 style="color: darkred; "> Chi Tiết Vé Mới Đặt</h1>
+<br><br>
+<div class="row">
+    <div class="col-md-12" *ngIf="ve">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Hình Ảnh Phim</th>
+                    <th scope="col">Tên Phim</th>
+                    <th scope="col">Giá Vé</th>
+                    <th scope="col">Ngày Chiếu</th>
+                    <th scope="col">Giờ Chiếu</th>
+                    <th scope="col">Số Ghế</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img class="card-img-top" style="width: 280px; height: 350px; 
+                            padding-left: 7px;padding-right: 5px; background-color: black" [src]="ve.phimId.hinh" alt=""></td>
+                    <td>{{ve.phimId.tenPhim}}</td>
+                    <td>{{ve.giaVe}}</td>
+                    <td>{{ve.gioChieu | date: 'dd/MM/yyyy'}}</td>
+                    <td>{{ve.gioChieu | date:'shortTime'}}</td>
+                    <td>{{ve.soGhe}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  
+</div>

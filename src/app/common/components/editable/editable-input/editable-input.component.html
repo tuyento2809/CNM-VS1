@@ -1,0 +1,23 @@
+<div>
+
+    <input *ngIf="isActiveInput" 
+    class="{{className}}"
+    type="text"
+     [(ngModel)]="entity[entityField]" [value]="entity[entityField]" />
+
+    <span *ngIf="!isActiveInput" class="{{className}} inline" >
+        </span>
+
+    <div class="inline">
+        <button *ngIf="!isActiveInput" 
+        class="btn btn-warning" (click)="isActiveInput = true">
+            Sửa</button>
+
+        <button *ngIf="isActiveInput" 
+            class="btn btn-success" (click)="updateEntity()">
+                Lưu</button>
+        <button *ngIf="isActiveInput" 
+        class="btn btn-danger" (click)="cancelUpdate()">
+            Hủy</button>
+    </div>
+</div>

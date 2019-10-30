@@ -1,0 +1,73 @@
+<section id="register">
+    <div class="bwm-form">
+        <div class="row">
+            <div class="col-md-5">
+                <h1 class="page-title">Đăng Ký</h1>
+                <form #registerForm="ngForm">
+                    <div class="form-group">
+                        <label for="tenTaiKhoan">Username</label>
+                        <input [(ngModel)]="formData.tenTaiKhoan" #tenTaiKhoan="ngModel" 
+                        name="tenTaiKhoan" type="text" class="form-control"
+                            id="tenTaiKhoan" required>
+                        <div *ngIf="tenTaiKhoan.invalid && (tenTaiKhoan.dirty || tenTaiKhoan.touched)" 
+                        class="alert alert-danger">
+                            <div *ngIf="tenTaiKhoan.errors.required">
+                                Yêu cầu nhập tên.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input [(ngModel)]="formData.email"  #email="ngModel" name="email" type="email" class="form-control" id="email"
+                            required>
+                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                                <div *ngIf="email.errors.required">
+                                    Yêu cầu nhập Email.
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input [(ngModel)]="formData.password" #password="ngModel" name="password" type="password" class="form-control"
+                            id="password" required>
+                            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                                <div *ngIf="password.errors.required">
+                                    Yêu cầu nhập Password.
+                                </div>
+                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordConfim">Confirm Password</label>
+                        <input [(ngModel)]="formData.passwordConfim"  #passwordConfim="ngModel" 
+                        name="passwordConfim" type="password"
+                            class="form-control" id="passwordConfim" required>
+                            <div *ngIf="passwordConfim.invalid && (passwordConfim.dirty || passwordConfim.touched)"
+                             class="alert alert-danger">
+                                <div *ngIf="passwordConfim.errors.required">
+                                    Yêu cầu xác nhận Password.
+                                </div>
+                            </div>
+                    </div>
+                    <button [disabled]="!registerForm.form.valid" (click)="register()" type="submit"
+                        class="btn btn-primary">Đăng Ký</button>
+                </form>
+                <div *ngIf="errors.length > 0" class="alert alert-danger">
+                    <p *ngFor="let error of errors">
+                        {{error.detail}}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 ml-auto">
+                <div class="image-container">
+                    <h2 class="catchphrase">
+                        Hãy đăng ký để Là thành viên của chúng tôi, để có thể đặt mua vé xem phim mà bạn muốn !
+                    </h2>
+                    <img src="assets/images/register-image.jpg" style="width: 520px; height: 320px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

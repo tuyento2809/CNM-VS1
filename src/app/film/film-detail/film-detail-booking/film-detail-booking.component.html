@@ -1,0 +1,99 @@
+<div class="booking">
+  <h1 style="color: chartreuse;">Đặt Vé</h1> <hr>
+  <h3 class="booking-price" style="text-align: center;">${{film?.gia}} <span class="booking-per-night">Mỗi Vé</span>
+  </h3>
+  <hr>
+  <hr>
+  <form [formGroup]="veForm" >
+      <!-- (ngSubmit)="" -->
+    <!-- <div class="form-group" id="Ngày Chiếu">
+      <label for="ngauChieu">Chọn Ngày Chiếu</label>
+      <input #ngayChieuInput class="form-control" id="ngayChieu" type="date" name="input" ng-model="value" min="2019-10-01"
+        max="2021-12-01" formControlName="ngayChieu" required />
+        <div *ngIf="veForm.controls['ngayChieu'].invalid && (veForm.controls['ngayChieu'].dirty || veForm.controls['ngayChieu'].touched)" class="alert alert-danger">
+            <div *ngIf="veForm.controls['ngayChieu'].errors.required">
+                Yêu cầu chọn ngày chiếu.
+            </div>
+        </div>
+
+    </div> -->
+    <div class="form-group" id="rap">
+      <label for="gioChieu">Chọn Xuất Chiếu</label>
+      <select #gioChieuInput formControlName="gioChieu" 
+      class="mdb-select md-form form-control" 
+      style="background-color:greenyellow; color:gray;">
+        <option  *ngFor="let xc of film?.xuatchieus" [ngValue]="xc">{{xc.gio | date: "short" }}</option>
+      </select>
+      <div *ngIf="veForm.controls['gioChieu'].invalid && (veForm.controls['gioChieu'].dirty || veForm.controls['gioChieu'].touched)" class="alert alert-danger">
+          <div *ngIf="veForm.controls['gioChieu'].errors.required">
+              Yêu cầu chọn xuất chiếu.
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group" id="rap">
+      <label for="rap">Chọn Rạp</label>
+      <select #rapInput formControlName="rap" class="mdb-select md-form form-control" style="background-color:greenyellow; color:gray;">
+        <option *ngFor="let rap of veForm.controls['gioChieu'].value.raps" [ngValue]="rap" >{{rap.tenRap}}</option>
+      </select>
+      <div *ngIf="veForm.controls['rap'].invalid && (veForm.controls['rap'].dirty || veForm.controls['rap'].touched)" class="alert alert-danger">
+        <div *ngIf="veForm.controls['rap'].errors.required">
+            Yêu cầu chọn rạp phim.
+        </div>
+    </div>
+    </div>
+
+    <div class="form-group" id="ghe">
+        <img  class="imgGhe"  src="../../../../assets/images/ManHinhGhe.PNG" /> <br>
+      <label for="ghe">Chọn Ghế</label>
+      <select #gheInput formControlName="ghe" class="mdb-select md-form form-control" style="background-color:greenyellow; color:gray;">
+        <option *ngFor="let ghe of danhsachghe(veForm.controls['rap'].value.ghes)" [ngValue]="ghe">{{ghe}}</option>
+        <!-- <option *ngFor="let ghe of veForm.controls['rap'].value.ghes" [ngValue]="ghe">{{ghe}}</option> -->
+      </select>
+    </div>
+
+
+    <br>
+    <button [disabled]="veForm.invalid" (click)="openConfirmModal(content)" class="btn btn-danger btn-confirm btn-block">Đặt vé ngay bây
+      giờ</button>
+
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Xác Nhận Đặt Vé</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <p>Ngày Chiếu: <em>{{ veForm.controls['gioChieu'].value.gio | date: 'dd/MM/yyyy'}}</em></p>
+        <p>Giờ Chiếu: <em>{{ veForm.controls['gioChieu'].value.gio | date:'shortTime'}}</em></p>
+        <p> Rap: <em>{{veForm.controls['rap'].value.tenRap}}</em> </p>
+        <p> Phim: <em>{{film?.tenPhim}}</em> </p>
+        <p>Số Ghế : <em>{{veForm.controls['ghe'].value}}</em></p>
+        <p>Giá: <em>{{film?.gia}}$</em></p>
+        
+        <!-- <bwm-payment></bwm-payment> -->
+
+        <br>
+        <b>Bạn có muốn xác nhận đặt vé không ?</b>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-confirm btn-block"  (click)="createVe()">Xác Nhận</button>
+        <button type="button" class="btn btn-danger btn-confirm btn-block" (click)="c('Close click')">Close</button>
+      </div>
+    </ng-template>
+
+  </form>
+
+  <hr>
+  <p class="booking-note-title">Mọi người quan tâm đến bộ phim này</p>
+  <p class="booking-note-text">
+    Có rất nhiều khác hàng đã tin dùng và đặt vé tại đây !
+  </p>
+  <br>
+  <hr>
+</div>
+
+<!-- <button (click)="abc()"> texxt</button> -->

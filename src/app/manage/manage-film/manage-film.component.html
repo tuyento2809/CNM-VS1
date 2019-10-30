@@ -1,0 +1,36 @@
+<section id="userRentals">
+    <h1 class="page-title">Quản Lý Phim</h1>
+    <div class="row">
+      <ng-container *ngIf="films && films.length > 0"> <!-- Check for rentals length -->
+        <div *ngFor="let film of films; let i= index" class="col-md-4"> <!-- Iterate Rentals -->
+          <div class="card text-center">
+            <div class="card-block">
+              <h4 class="card-title"> Tên Phim: {{film.tenPhim}}</h4> 
+              <div class="">
+                <a class="btn btn-info col-md-6" routerLink="/films/{{film._id}}"> Chi Tiết Phim</a>
+                <a class="btn btn-warning col-md-6" routerLink="/films/{{film._id}}/edit"> Sửa Phim</a>
+               
+              </div>
+            </div>
+            <div class=" row card-footer text-muted">
+               <p class="col-md-8">Thể Loại: {{film.theloai.tenLoai}} - Giá: {{film.gia}}$</p> <!-- Created At -->
+               <button (click)="filmDeleteIndex = i" 
+                            *ngIf="filmDeleteIndex !== i"
+                            class="col-md-4" type="button" 
+                            class="btn btn-danger">XÓA</button> 
+            
+                <div  *ngIf="filmDeleteIndex === i">
+                  <p class="confirm-mesage">Bạn có muốn xóa ?</p>
+                  <button (click)="deleteFilm(film._id)" class="btn btn-success">CÓ </button>
+                  <button 
+                        (click)="filmDeleteIndex = undefined"
+                        class="btn btn-danger">Không</button>
+                </div>
+             </div>
+          </div>
+        </div>
+      </ng-container>
+   
+    </div>
+  </section>
+  

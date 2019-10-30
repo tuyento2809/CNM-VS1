@@ -1,0 +1,39 @@
+{
+    "films": [
+        {
+    "tenPhim": "hạu dua mt",
+    "mota": "b ajdjd â",
+    "gia": 1000,
+    "hinh": "assets/Hinh.PNG"
+        },
+        {
+    "tenPhim": "hạu dua mt",
+    "mota": "b ajdjd â",
+    "gia": 2000,
+    "hinh": "../../../assets/h1.PNG"
+        },
+        {
+    "tenPhim": "hạu dua mt",
+    "mota": "b ajdjd â",
+    "gia": 1000,
+    "hinh": "../../../assets/H2.PNG"
+        },
+        {
+    "tenPhim": "hkkkạu lll mt",
+    "mota": "b ajdjd â",
+    "gia": 1000,
+    "hinh": "../../../assets/H3.PNG"
+        },
+        {
+    "tenPhim": "hkkkạu lll mt",
+    "mota": "b ajdjdd d ",
+    "gia": 4000,
+    "hinh": "../../../assets/H4.PNG"
+        }
+    ],
+    "xuatchieus":[
+        {"gioChieu":"2019-11-02T00:00:00.000+00:00"},
+        {"gioChieu":"2016-12-01T10:09:00.000+00:00"}
+    ],
+    "theloai":{"tenLoai":"Hài"}
+}

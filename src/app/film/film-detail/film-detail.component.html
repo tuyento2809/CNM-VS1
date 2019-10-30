@@ -1,0 +1,31 @@
+<br><br>
+<h1 style="color: darkred; "> Chi Tiết Phim: {{film?.tenPhim | ucwords}}</h1>
+<br><br>
+<div class="row">
+    <div class="col-md-7" *ngIf="film">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Tên Phim</th>
+                    <th scope="col">Mô Tả</th>
+                    <th scope="col">Giá Phim</th>
+                    <th scope="col">Thể Loại</th>
+                    <th scope="col">Hinh Ảnh</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{film.tenPhim | ucwords}}</td>
+                    <td>{{film.mota}}</td>
+                    <td>{{film?.gia}}$</td>
+                    <td>{{film?.theloai?.tenLoai}}</td>
+                    <td><img class="card-img-top" style="width: 170px; height: 190px; 
+        padding-left: 7px;padding-right: 5px; background-color: black" [src]="film.hinh" alt=""></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-5" style="border:1px solid rgb(238, 194, 194);">
+        <bwm-film-detail-booking [film]="film" ></bwm-film-detail-booking>
+    </div>
+</div>
